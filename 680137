@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Screen</title>
+  <style>
+    /* CSS for styling */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff; /* Set background color to white */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .loading-logo {
+      width: 400px;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <img class="loading-logo" src="app_logo.png" alt="Your App Logo">
+  
+  <script>
+    setTimeout(function() {
+      window.location.href = 'login.html';
+    }, 2000); 
+  </script>
+</body>
+</html>
