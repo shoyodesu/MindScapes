@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram - Search</title>
+  <style>
+    /* CSS for styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .search-box {
+      background-color: #ffffff;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .search-results {
+      margin-top: 20px;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      cursor: pointer; /* Add cursor pointer for clickable suggestions */
+    }
+
+    .user img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .user-details {
+      flex-grow: 1;
+    }
+
+    .username {
+      font-weight: bold;
+    }
+
+    .name {
+      color: #666666;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+
+      .user img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    /* Styling for the footer navigation bar */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      color: black;
+      text-align: center;
+      padding: 22px 0; /* Increased padding for the footer */
+      border-top: 1px solid #ddd; /* Added border at the top for separation */
+    }
+
+    footer img {
+      height: 25px;
+      width: 25px;
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="search-box">
+      <input type="text" class="search-input" placeholder="Search" onkeyup="showSuggestions()">
+    </div>
+
+    <div class="search-results" id="searchResults">
+      <!-- Suggestions will be dynamically added here -->
+    </div>
+  </div>
+
+  <footer style="display: flex; justify-content: space-around; padding: 20px 10px;">
+    <a href="Home.html"><img src="logo1.jpg" alt="Home"></a>
+    <a href="search.html"><img src="logo2.png" alt="Search"></a>
+    <a href="message.html"><img src="logo3.png" alt="Message"></a>
+    <a href="profile1.html"><img src="logo4.jpg" alt="Profile"></a>
+  </footer>
+
+  <script>
+    var usersData = [
+      { username: "vinaraogab", name: "Gabriel Vinarao", profilePage: "profile1.html", profileImage: "profile2.jpg" },
+      { username: "abiaoangela", name: "Angela Abiao", profilePage: "profile2.html", profileImage: "profile4.jpg" }
+    ];
+
+    function showSuggestions() {
+      var input = document.querySelector('.search-input').value.toLowerCase();
+      var searchResults = document.getElementById('searchResults');
+      searchResults.innerHTML = ''; // Clear previous suggestions
+
+      if (input.length > 0) {
+        usersData.forEach(function(user) {
+          if (user.username.toLowerCase().startsWith(input)) {
+            var userDiv = document.createElement('div');
+            userDiv.className = 'user';
+            userDiv.setAttribute('onclick', `openProfile('${user.profilePage}')`);
+
+            var userImg = document.createElement('img');
+            userImg.src = user.profileImage; // Use different profile image for each user
+            userImg.alt = 'User';
+
+            var userDetails = document.createElement('div');
+            userDetails.className = 'user-details';
+
+            var username = document.createElement('p');
+            username.className = 'username';
+            username.textContent = user.username;
+
+            var name = document.createElement('p');
+            name.className = 'name';
+            name.textContent = user.name;
+
+            userDetails.appendChild(username);
+            userDetails.appendChild(name);
+
+            userDiv.appendChild(userImg);
+            userDiv.appendChild(userDetails);
+
+            searchResults.appendChild(userDiv);
+          }
+        });
+      }
+    }
+
+    function openProfile(profilePage) {
+      window.location.href = profilePage;
+    }
+  </script>
+</body>
+</html>
