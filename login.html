@@ -118,24 +118,193 @@
       var username = document.getElementById('username').value;
       var password = document.getElementById('password').value;
 
-      if (username === '' || password === '') {
+      if (username === 'vinaraogab' && password === '12345678') {
+        window.location.href = 'home.html'; // Redirect to home page on successful login
+        return false;
+      } else if (username === 'ginataangjellyace' && password === '12345678') {
+        window.location.href = 'home.html'; // Redirect to home page on successful login
+        return false;
+      } else if (username === '' || password === '') {
         alert('Please enter both username and password to login.');
         return false;
+      } else {
+        // Send login request to the server using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'login.php'); // Replace 'login.php' with the actual URL for your login endpoint
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.success) {
+              window.location.href = 'home.html'; // Redirect to home page on successful login
+            } else {
+              alert(response.message); // Display error message from the server
+            }
+          } else {
+            alert('Error: ' + xhr.status); // Display error message if request fails
+          }
+        };
+        xhr.send(JSON.stringify({ username: username, password: password }));
+
+        return false; // Prevent default form submission
       }
+    }
+
+    function showPasswordHint() {
+      alert('Clue: 12345678');
+    }
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindscapes - Login</title>
+  <style>
+    /* CSS for styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #fafafa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Make the body fill the entire viewport height */
+    }
+
+    .login-container {
+      background-color: #fff;
+      border: 1px solid #dbdbdb;
+      border-radius: 4px;
+      padding: 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px; /* Adjust the max-width as needed */
+    }
+
+    .login-logo {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .login-logo img {
+      width: 100%;
+      max-width: 300px; /* Adjust the max-width as needed */
+      height: auto;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 14px;
+      color: #8e8e8e;
+      margin-bottom: 8px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dbdbdb;
+      border-radius: 10px;
+      background-color: #fafafa;
+      font-size: 14px;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: #0095f6;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .login-btn:hover {
+      background-color: #008ae6;
+    }
+
+    .forgot-password {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #003569;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #003569;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-logo">
+      <img src="title.jpg" alt="MindScapes">
+    </div>
+    <form onsubmit="return login()">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+    <div class="forgot-password">
+      <a href="#" onclick="showPasswordHint()">Forgot password?</a>
+    </div>
+    <div class="signup-link">
+      Don't have an account? <a href="#">Sign up</a>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
 
       if (username === 'vinaraogab' && password === '12345678') {
-        window.location.href = 'home.html';
+        window.location.href = 'home.html'; // Redirect to home page on successful login
+        return false;
       } else if (username === 'ginataangjellyace' && password === '12345678') {
-        window.location.href = 'home.html';
-      } else if (username !== 'vinaraogab' && username !== 'ginataangjellyace') {
-        alert('Invalid username. Please enter a valid username.');
+        window.location.href = 'home.html'; // Redirect to home page on successful login
         return false;
-      } else if (password !== '12345678') {
-        alert('Invalid password. Please enter a valid password.');
+      } else if (username === '' || password === '') {
+        alert('Please enter both username and password to login.');
         return false;
-      }
+      } else {
+        // Send login request to the server using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'login.php'); // Replace 'login.php' with the actual URL for your login endpoint
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.success) {
+              window.location.href = 'home.html'; // Redirect to home page on successful login
+            } else {
+              alert(response.message); // Display error message from the server
+            }
+          } else {
+            alert('Error: ' + xhr.status); // Display error message if request fails
+          }
+        };
+        xhr.send(JSON.stringify({ username: username, password: password }));
 
-      return true;
+        return false; // Prevent default form submission
+      }
     }
 
     function showPasswordHint() {
