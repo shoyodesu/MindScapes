@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEMORIES</title>
+  <style>
+    /* CSS for styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fafafa;
+    }
+
+    .container {
+      max-width: 900px;
+    }
+
+    .post {
+      background-color: #fff;
+      border: 1px solid #dbdbdb;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .username {
+      font-weight: bold;
+    }
+
+    .post-image {
+      max-width: 100%;
+      border-bottom: 1px solid #dbdbdb;
+    }
+
+    .post-caption {
+      padding: 10px;
+    }
+
+    .likes-comments {
+      padding: 10px;
+    }
+
+    .likes-comments span {
+      margin-right: 10px;
+    }
+   
+    .comment {
+      padding: 10px;
+    }
+
+    /* Styling for the footer navigation bar */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      color: black;
+      text-align: center;
+      padding: 22px 0; /* Increased padding for the footer */
+      border-top: 1px solid #ddd; /* Added border at the top for separation */
+    }
+
+    footer img {
+      height: 25px;
+      width: 25px;
+    }
+
+    /* Styling for the page name */
+    .page-name {
+      text-align: center;
+    }
+
+    .page-name img {
+      max-width: 100%; /* Adjust the maximum width of the image */
+      margin-bottom: 0; /* Remove bottom margin */
+    }
+  </style>
+</head>
+<body>
+  <div class="page-name">
+    <img src="title.jpg" alt="Tic Tac">
+  </div>
+
+  <div class="container">
+    <!-- Sample Post 1 -->
+    <div class="post">
+      <div class="post-header">
+        <img class="avatar" src="profile1.jpg" alt="User Avatar">
+        <div>
+          <p class="username">koolkid</p>
+          <p>Bali, Indonesia</p>
+        </div>
+      </div>
+      <img class="post-image" src="post1.jpeg" alt="Post Image">
+      <div class="post-caption">
+        <p class="username">koolkid</p>
+        <p>ritch bich</p>
+      </div>
+      <div class="likes-comments">
+        <span>100 likes</span>
+        <span>20 comments</span>
+      </div>
+      <div class="comments">
+        <div class="comment">
+          <span class="username">mysterious_guy</span>
+          <span>Vitamin Sea yarn</span>
+        </div>
+        <div class="comment">
+          <span class="username">epal_na_cm</span>
+          <span>Tara nomi</span>
+        </div>
+        <!-- More comments can be added dynamically -->
+      </div>
+    </div>
+
+    <!-- Sample Post 2 -->
+    <div class="post">
+      <div class="post-header">
+        <img class="avatar" src="profile2.jpg" alt="User Avatar">
+        <div>
+          <p class="username">vinaraogab</p>
+          <p>Carmona</p>
+        </div>
+      </div>
+      <img class="post-image" src="post2.jpeg" alt="Post Image">
+      <div class="post-caption">
+        <p class="username">vinaraogab</p>
+        <p>last day of plastikan</p>
+      </div>
+      <div class="likes-comments">
+        <span>200 likes</span>
+        <span>30 comments</span>
+      </div>
+      <div class="comments">
+        <div class="comment">
+          <span class="username">gg</span>
+          <span>buti naman</span>
+        </div>
+        <div class="comment">
+          <span class="username">pou</span>
+          <span>nyyyaaaaa!</span>
+        </div>
+        <!-- More comments can be added dynamically -->
+        <div class="post">
+          <div class="post-header">
+          </div>
+          <img class="post-image" src="post3.png" alt="Post Image">
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- Static navigation bar -->
+<footer style="display: flex; justify-content: space-around; padding: 20px 10px;">
+  <img src="logo1.jpg" alt="Home" onclick="goToTop()">
+  <a href="search.html"><img src="logo2.png" alt="Search"></a>
+  <a href="message.html"><img src="logo3.png" alt="Message"></a>
+  <a href="profile1.html"><img src="logo4.jpg" alt="Profile"></a>
+</footer>
+
+<script>
+  function goToTop() {
+    window.scrollTo(0, 0); // Scroll to the top of the page
+    location.reload(); // Reload the page
+  }
+</script>
+  </footer>
+</body>
+</html>
