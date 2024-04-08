@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <style>
+    /* CSS for styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .profile {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-picture {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      cursor: pointer; /* Add cursor pointer for clickable profile pictures */
+    }
+
+    .user-details {
+      flex-grow: 1;
+    }
+
+    .username {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .stats {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .stat {
+      margin-right: 20px;
+    }
+
+    .stat span {
+      font-weight: bold;
+    }
+
+    .bio {
+      margin-top: 20px;
+    }
+    
+    .showcase {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .showcase img {
+      width: calc(33.33% - 20px);
+      margin: 10px;
+      border-radius: 10px;
+      object-fit: cover;
+      cursor: pointer; /* Add cursor pointer for clickable showcase photos */
+    }
+
+    /* Responsive styles */
+    @media (max-width: 600px) {
+      .profile {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .profile-picture {
+        margin-right: 0;
+      }
+
+      .stats {
+        justify-content: center;
+      }
+
+      .stat {
+        margin-right: 10px;
+      }
+    }
+    
+    /* Styling for the footer navigation bar */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      color: black;
+      text-align: center;
+      padding: 22px 0; /* Increased padding for the footer */
+      border-top: 1px solid #ddd; /* Added border at the top for separation */
+    }
+
+    footer img {
+      height: 25px;
+      width: 25px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="profile">
+      <img class="profile-picture" src="profile2.jpg" alt="Profile Picture" onclick="zoomImage(this)">
+      <div class="user-details">
+        <p class="username">Gabriel Vinarao<br><small>@vinaraogab</small></br></p>
+        <div class="stats">
+          <div class="stat">
+            <span>Posts:</span> 3
+          </div>
+          <div class="stat">
+            <span>Followers:</span> 1M
+          </div>
+          <div class="stat">
+            <span>Following:</span> 50
+          </div>
+        </div>
+        <p class="bio">Posting Random Stuffs<br>chronically online</b></p>
+      </div>
+    </div>
+    
+    <!-- Showcase photos -->
+    <div class="showcase">
+      <img src="showcase3.jpg" alt="Showcase Photo 1" onclick="zoomImage(this)">
+      <img src="showcase2.jpg" alt="Showcase Photo 2" onclick="zoomImage(this)">
+      <img src="showcase1.jpg" alt="Showcase Photo 3" onclick="zoomImage(this)">
+    </div>
+  </div>
+  
+  <!-- Static navigation bar -->
+  <footer style="display: flex; justify-content: space-around; padding: 20px 10px;">
+    <a href="Home.html"><img src="logo1.jpg" alt="Home"></a>
+    <a href="search.html"><img src="logo2.png" alt="Search"></a>
+    <a href="message.html"><img src="logo3.png" alt="Message"></a>
+    <a href="profile1.html"><img src="logo4.jpg" alt="Profile"></a>
+  </footer>
+
+  <script>
+    function zoomImage(image) {
+      // Create a modal element
+      var modal = document.createElement('div');
+      modal.style.position = 'fixed';
+      modal.style.top = '0';
+      modal.style.left = '0';
+      modal.style.width = '100%';
+      modal.style.height = '100%';
+      modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+      modal.style.display = 'flex';
+      modal.style.justifyContent = 'center';
+      modal.style.alignItems = 'center';
+
+      // Create an image element for the modal
+      var modalImage = document.createElement('img');
+      modalImage.src = image.src;
+      modalImage.style.maxWidth = '90%';
+      modalImage.style.maxHeight = '90%';
+      modalImage.style.borderRadius = '10px';
+
+      // Append the image to the modal
+      modal.appendChild(modalImage);
+
+      // Add an event listener to remove the modal when clicked
+      modal.addEventListener('click', function() {
+        document.body.removeChild(modal);
+      });
+
+      // Append the modal to the body
+      document.body.appendChild(modal);
+    }
+  </script>
+</body>
+</html>
